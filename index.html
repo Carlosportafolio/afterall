@@ -62,9 +62,9 @@
     <nav class="fixed top-0 w-full z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center">
-                <!-- LOGO: Cambia "logo.png" por el nombre exacto de tu archivo -->
+                <!-- LOGO: Ahora busca dentro de la carpeta "logosafter" -->
                 <img 
-                    src="./logoaf.png.png" 
+                    src="./logosafter/logoaf.png.png" 
                     alt="Logo After.All (Si ves este texto, el nombre o ruta de la imagen están mal escritos)" 
                     class="h-10 w-auto object-contain" 
                 />
@@ -123,7 +123,7 @@
     <!-- HERO SECTION -->
     <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
         
-        <!-- VIDEO DE FONDO -->
+        <!-- VIDEO DE FONDO: Ahora busca dentro de la carpeta "logosafter" -->
         <video 
             autoplay 
             loop 
@@ -131,7 +131,7 @@
             playsinline
             class="absolute inset-0 w-full h-full object-cover -z-20 opacity-40 mix-blend-screen"
         >
-            <source src="/showreel.mp4" type="video/mp4" />
+            <source src="./logosafter/showreel.mp4" type="video/mp4" />
         </video>
         
         <!-- OVERLAY OSCURO -->
@@ -374,9 +374,9 @@
     <footer class="border-t border-white/10 bg-[#0a0a0a] py-12 px-6 relative z-10">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center opacity-80 hover:opacity-100 transition-opacity">
-                <!-- LOGO FOOTER: Cambia "logo.png" por el nombre exacto de tu archivo -->
+                <!-- LOGO FOOTER: Ahora busca dentro de la carpeta "logosafter" -->
                 <img 
-                    src="./logoaf.png.png" 
+                    src="./logosafter/logoaf.png.png" 
                     alt="Logo After.All" 
                     class="h-8 w-auto object-contain" 
                 />
@@ -579,7 +579,8 @@
         misMarcas.forEach((nombreArchivo, index) => {
             logosHTML += `
                 <div class="flex items-center justify-center transition-transform duration-300 hover:scale-110 px-4 w-32 md:w-48 h-16 md:h-24">
-                    <img src="./${nombreArchivo}" alt="Marca cliente ${index + 1}" class="w-full h-full object-contain" />
+                    <!-- Las imágenes de las marcas también buscan en la carpeta "logosafter" -->
+                    <img src="./logosafter/${nombreArchivo}" alt="Marca cliente ${index + 1}" class="w-full h-full object-contain" />
                 </div>
             `;
         });
