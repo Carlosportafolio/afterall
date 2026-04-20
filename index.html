@@ -12,31 +12,24 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* ESTILOS DE ANIMACIÓN PERSONALIZADOS */
+        /* ESTILOS Y ANIMACIONES PERSONALIZADAS */
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 5rem;
         }
 
-        /* 1. Animación de entrada */
+        /* Animación de entrada principal */
         @keyframes fade-in-up {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* 2. Animación en bucle (Flotar) */
+        /* Efecto de flotación */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
         }
 
-        /* Clases combinadas: Entran y luego se quedan flotando en bucle */
         .animate-hero-1 {
             animation: fade-in-up 0.8s ease-out forwards, float 6s ease-in-out 0.8s infinite;
             opacity: 0;
@@ -46,13 +39,13 @@
             opacity: 0;
         }
 
-        /* 3. Animación de Carrusel Infinito para Logos */
-        @keyframes scroll-x {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+        /* Ocultar barra de desplazamiento para los carruseles arrastrables */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
         }
-        .animate-scroll-x {
-            animation: scroll-x 50s linear infinite;
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
@@ -65,7 +58,7 @@
                 <!-- LOGO: Ahora busca dentro de la carpeta "logosafter" -->
                 <img 
                     src="./logosafter/logoaf.png.png" 
-                    alt="Logo After.All (Si ves este texto, el nombre o ruta de la imagen están mal escritos)" 
+                    alt="Logo After.All" 
                     class="h-10 w-auto object-contain" 
                 />
             </div>
@@ -77,7 +70,7 @@
                     <a href="#products" class="hover:text-white transition">Servicios</a>
                 </div>
                 
-                <!-- REDES SOCIALES ARRIBA (Desktop) justo al lado de servicios -->
+                <!-- REDES SOCIALES ARRIBA (Desktop) -->
                 <div class="flex items-center gap-4">
                     <a href="#" class="text-gray-400 hover:text-white transition hover:-translate-y-0.5 duration-300" aria-label="Instagram">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
@@ -107,7 +100,6 @@
                     Agendar
                 </a>
                 
-                <!-- REDES SOCIALES ARRIBA (Mobile) -->
                 <div class="flex items-center justify-center gap-8 pt-6 mt-2 border-t border-white/10">
                     <a href="#" class="text-gray-400 hover:text-white transition">
                         <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
@@ -123,26 +115,18 @@
     <!-- HERO SECTION -->
     <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
         
-        <!-- VIDEO DE FONDO: Ahora busca dentro de la carpeta "logosafter" -->
-        <video 
-            autoplay 
-            loop 
-            muted 
-            playsinline
-            class="absolute inset-0 w-full h-full object-cover -z-20 opacity-40 mix-blend-screen"
-        >
+        <!-- VIDEO DE FONDO -->
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover -z-20 opacity-40 mix-blend-screen pointer-events-none">
             <source src="./logosafter/showreel.mp4" type="video/mp4" />
         </video>
         
-        <!-- OVERLAY OSCURO -->
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/60 to-[#0a0a0a] -z-10"></div>
-
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 via-[#0a0a0a]/60 to-[#0a0a0a] -z-10 pointer-events-none"></div>
         <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/30 rounded-full blur-[120px] pointer-events-none mix-blend-screen"></div>
         <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-600/20 rounded-full blur-[100px] pointer-events-none mix-blend-screen"></div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10 w-full">
             
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-purple-300 mb-8 backdrop-blur-sm animate-hero-1">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-purple-300 mb-8 backdrop-blur-sm animate-hero-1 select-none">
                 <span class="relative flex h-2 w-2">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
@@ -150,30 +134,33 @@
                 Agencia Boutique de Growth Content
             </div>
             
-            <!-- CONTENEDOR DE TEXTOS ROTATIVOS -->
-            <div class="relative h-[300px] sm:h-[220px] md:h-[250px] w-full flex items-center justify-center mb-8">
+            <!-- CONTENEDOR DE TEXTOS ROTATIVOS (AHORA ARRASTRABLE/SWIPEABLE) -->
+            <div id="hero-carousel-container" class="relative h-[330px] sm:h-[220px] md:h-[250px] w-full flex items-center justify-center mb-4 cursor-grab active:cursor-grabbing group">
                 
-                <!-- Texto 0 -->
-                <div id="hero-text-0" class="absolute w-full transition-all duration-1000 ease-out opacity-100 translate-y-0 blur-none">
+                <div id="hero-text-0" class="absolute w-full transition-all duration-700 ease-out opacity-100 translate-x-0 blur-none pointer-events-none select-none">
                     <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-tight">
                         El contenido "estético" no paga facturas. La <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-orange-400">retención y autoridad</span> sí.
                     </h1>
                 </div>
 
-                <!-- Texto 1 -->
-                <div id="hero-text-1" class="absolute w-full transition-all duration-1000 ease-out opacity-0 translate-y-8 blur-[4px] pointer-events-none">
+                <div id="hero-text-1" class="absolute w-full transition-all duration-700 ease-out opacity-0 translate-x-12 blur-[4px] pointer-events-none select-none">
                     <h2 class="text-3xl md:text-5xl font-bold tracking-tight leading-tight text-white">
                         Después de todo (<span class="text-purple-400">After.All</span>),<br class="hidden md:block"/> de nada te sirven millones de reproducciones si no tienes un sistema para convertirlas en clientes.
                     </h2>
                 </div>
 
-                <!-- Texto 2 -->
-                <div id="hero-text-2" class="absolute w-full transition-all duration-1000 ease-out opacity-0 translate-y-8 blur-[4px] pointer-events-none">
+                <div id="hero-text-2" class="absolute w-full transition-all duration-700 ease-out opacity-0 translate-x-12 blur-[4px] pointer-events-none select-none">
                     <h2 class="text-2xl md:text-4xl font-bold tracking-tight leading-relaxed text-gray-300">
                         No vendemos "paquetes de posts".<br class="hidden md:block"/> Auditamos tus métricas, hackeamos el formato corto y gestionamos ecosistemas diseñados estratégicamente para dominar tu nicho.
                     </h2>
                 </div>
+            </div>
 
+            <!-- Puntos de Navegación del Hero -->
+            <div class="flex items-center justify-center gap-2 mb-10 h-6">
+                <button onclick="goToHeroSlide(0)" id="hero-dot-0" class="h-2 w-8 rounded-full bg-purple-500 transition-all duration-300"></button>
+                <button onclick="goToHeroSlide(1)" id="hero-dot-1" class="h-2 w-2 rounded-full bg-white/20 hover:bg-white/50 transition-all duration-300"></button>
+                <button onclick="goToHeroSlide(2)" id="hero-dot-2" class="h-2 w-2 rounded-full bg-white/20 hover:bg-white/50 transition-all duration-300"></button>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-hero-4">
@@ -187,24 +174,19 @@
         </div>
     </section>
 
-    <!-- SECCIÓN: MARCAS / SOCIAL PROOF -->
+    <!-- SECCIÓN: MARCAS / SOCIAL PROOF (AHORA ARRASTRABLE E INFINITO) -->
     <section class="py-12 border-b border-white/10 bg-[#0a0a0a] relative z-10 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 mb-10">
-            <p class="text-center text-sm font-semibold text-gray-500 uppercase tracking-widest">
-                Marcas y creadores que han confiado en nuestro trabajo
+            <p class="text-center text-sm font-semibold text-gray-500 uppercase tracking-widest flex items-center justify-center gap-3">
+                <i data-lucide="move-horizontal" class="w-4 h-4 opacity-50 hidden md:block animate-pulse"></i>
+                Desliza para ver marcas que confían en nosotros
+                <i data-lucide="move-horizontal" class="w-4 h-4 opacity-50 hidden md:block animate-pulse"></i>
             </p>
         </div>
         
-        <div class="flex w-full overflow-hidden group">
-            <!-- Pista 1 -->
-            <div id="marquee-1" class="flex w-max min-w-full shrink-0 animate-scroll-x items-center justify-around gap-16 px-8 group-hover:[animation-play-state:paused]">
-                <!-- Logos (Generados dinámicamente en JS) -->
-            </div>
-            
-            <!-- Pista 2 -->
-            <div id="marquee-2" class="flex w-max min-w-full shrink-0 animate-scroll-x items-center justify-around gap-16 px-8 group-hover:[animation-play-state:paused]" aria-hidden="true">
-                <!-- Logos duplicados -->
-            </div>
+        <!-- Carrusel Principal de Marcas -->
+        <div id="brands-carousel" class="flex w-full overflow-x-hidden cursor-grab active:cursor-grabbing scrollbar-hide select-none py-4">
+            <!-- Logos Inyectados dinámicamente -->
         </div>
     </section>
 
@@ -273,7 +255,7 @@
 
             <!-- Grilla de Servicios -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="services-grid">
-                <!-- Se rellena con JavaScript más abajo para mantener el HTML limpio -->
+                <!-- Se rellena dinámicamente -->
             </div>
         </div>
     </section>
@@ -324,7 +306,7 @@
                 </div>
             </div>
 
-            <!-- Formulario (Ahora configurado para enviar a WhatsApp mediante JavaScript) -->
+            <!-- Formulario -->
             <form id="wsp-form" class="bg-white/[0.03] border border-white/10 p-8 md:p-10 rounded-3xl backdrop-blur-md shadow-2xl">
                 <h3 class="text-2xl font-bold mb-8 text-white">Cuéntanos sobre tu proyecto</h3>
                 <div class="space-y-5">
@@ -374,12 +356,8 @@
     <footer class="border-t border-white/10 bg-[#0a0a0a] py-12 px-6 relative z-10">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div class="flex items-center opacity-80 hover:opacity-100 transition-opacity">
-                <!-- LOGO FOOTER: Ahora busca dentro de la carpeta "logosafter" -->
-                <img 
-                    src="./logosafter/logoaf.png.png" 
-                    alt="Logo After.All" 
-                    class="h-8 w-auto object-contain" 
-                />
+                <!-- LOGO FOOTER -->
+                <img src="./logosafter/logoaf.png.png" alt="Logo After.All" class="h-8 w-auto object-contain" />
             </div>
             <p class="text-gray-500 text-sm text-center md:text-left">
                 © <span id="current-year"></span> After.All. Todos los derechos reservados. Diseñado desde Lima para el mundo.
@@ -388,13 +366,7 @@
     </footer>
 
     <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a
-        href="https://wa.me/51935964364?text=Hola%20After.All,%20quiero%20potenciar%20mi%20contenido."
-        target="_blank"
-        rel="noopener noreferrer"
-        class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg shadow-[#25D366]/30 hover:bg-[#1ebe57] hover:-translate-y-1 hover:scale-105 transition-all duration-300 group"
-        aria-label="Contactar por WhatsApp"
-    >
+    <a href="https://wa.me/51935964364?text=Hola%20After.All,%20quiero%20potenciar%20mi%20contenido." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg shadow-[#25D366]/30 hover:bg-[#1ebe57] hover:-translate-y-1 hover:scale-105 transition-all duration-300 group" aria-label="Contactar por WhatsApp">
         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
@@ -402,17 +374,13 @@
 
     <!-- SCRIPTS MÁGICOS (VANILLA JAVASCRIPT) -->
     <script>
-        // 1. Inicializar iconos de Lucide
         lucide.createIcons();
-
-        // 2. Establecer el año actual en el footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // 3. Lógica para abrir/cerrar el menú en celular
+        // LÓGICA MENÚ MÓVIL
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
-            
             if (menu.classList.contains('hidden')) {
                 menu.classList.remove('hidden');
                 menuIcon.setAttribute('data-lucide', 'x');
@@ -420,202 +388,189 @@
                 menu.classList.add('hidden');
                 menuIcon.setAttribute('data-lucide', 'menu');
             }
-            lucide.createIcons(); // Refrescar el ícono tras cambiarlo
+            lucide.createIcons();
         }
 
-        // 4. Lógica para el carrusel de texto en el Hero
+        // ==========================================
+        // LÓGICA DEL CARRUSEL DE HERO (ARRASTRABLE)
+        // ==========================================
         let heroStep = 0;
         const totalSteps = 3;
-        
-        setInterval(() => {
-            const currentEl = document.getElementById(`hero-text-${heroStep}`);
-            // Desaparecer el actual
-            currentEl.classList.remove('opacity-100', 'translate-y-0', 'blur-none');
-            currentEl.classList.add('opacity-0', 'translate-y-8', 'blur-[4px]', 'pointer-events-none');
-            
-            // Avanzar al siguiente
-            heroStep = (heroStep + 1) % totalSteps;
-            
-            // Aparecer el nuevo
-            const nextEl = document.getElementById(`hero-text-${heroStep}`);
-            nextEl.classList.remove('opacity-0', 'translate-y-8', 'blur-[4px]', 'pointer-events-none');
-            nextEl.classList.add('opacity-100', 'translate-y-0', 'blur-none');
-        }, 5000);
+        let heroInterval;
+        const heroContainer = document.getElementById('hero-carousel-container');
 
-        // 5. Inyectar datos de los servicios dinámicamente
+        function goToHeroSlide(step) {
+            heroStep = step;
+            for(let i=0; i<totalSteps; i++) {
+                const el = document.getElementById(`hero-text-${i}`);
+                const dot = document.getElementById(`hero-dot-${i}`);
+                if(i === step) {
+                    el.classList.remove('opacity-0', 'translate-x-12', 'blur-[4px]');
+                    el.classList.add('opacity-100', 'translate-x-0', 'blur-none');
+                    dot.classList.replace('bg-white/20', 'bg-purple-500');
+                    dot.classList.replace('w-2', 'w-8');
+                } else {
+                    el.classList.remove('opacity-100', 'translate-x-0', 'blur-none');
+                    // Efecto de dirección al ocultar
+                    el.classList.add('opacity-0', i < step ? '-translate-x-12' : 'translate-x-12', 'blur-[4px]');
+                    dot.classList.replace('bg-purple-500', 'bg-white/20');
+                    dot.classList.replace('w-8', 'w-2');
+                }
+            }
+            resetHeroTimer();
+        }
+
+        function resetHeroTimer() {
+            clearInterval(heroInterval);
+            heroInterval = setInterval(() => {
+                goToHeroSlide((heroStep + 1) % totalSteps);
+            }, 5000);
+        }
+        
+        // Iniciar
+        goToHeroSlide(0);
+
+        // Detectar Arrastre/Swipe en el Hero
+        let heroStartX = 0;
+        let heroEndX = 0;
+
+        const handleHeroSwipe = () => {
+            const swipeDistance = heroEndX - heroStartX;
+            if (swipeDistance < -50) goToHeroSlide((heroStep + 1) % totalSteps); // Swipe izquierda
+            if (swipeDistance > 50) goToHeroSlide((heroStep - 1 + totalSteps) % totalSteps); // Swipe derecha
+        };
+
+        // Eventos Mouse
+        heroContainer.addEventListener('mousedown', e => { heroStartX = e.screenX; });
+        heroContainer.addEventListener('mouseup', e => { heroEndX = e.screenX; handleHeroSwipe(); });
+        
+        // Eventos Táctiles (Móvil)
+        heroContainer.addEventListener('touchstart', e => { heroStartX = e.changedTouches[0].screenX; }, {passive: true});
+        heroContainer.addEventListener('touchend', e => { heroEndX = e.changedTouches[0].screenX; handleHeroSwipe(); });
+
+
+        // ==========================================
+        // INYECTAR SERVICIOS
+        // ==========================================
         const products = [
             {
-                id: 'auditoria',
-                title: 'Auditoría de Métricas',
+                id: 'auditoria', title: 'Auditoría de Métricas', icon: 'bar-chart-3', gradient: 'from-purple-500 to-pink-500', bgGlow: 'bg-purple-500/20', buttonText: 'Solicitar Auditoría', gradientColors: ['#A855F7', '#EC4899'],
                 description: 'Diagnóstico profundo de tu contenido y rendimiento. Identificamos exactamente qué está fallando y por qué no estás creciendo.',
-                features: [
-                    'Radiografía de retención y métricas',
-                    'Detección de fugas de audiencia',
-                    'Plan de acción claro y ejecutable'
-                ],
-                icon: 'bar-chart-3',
-                gradient: 'from-purple-500 to-pink-500',
-                bgGlow: 'bg-purple-500/20',
-                buttonText: 'Solicitar Auditoría',
-                gradientColors: ['#A855F7', '#EC4899']
+                features: ['Radiografía de retención y métricas', 'Detección de fugas de audiencia', 'Plan de acción claro y ejecutable']
             },
             {
-                id: 'edicion',
-                title: 'Edición de Reels (Formato Corto)',
+                id: 'edicion', title: 'Edición de Reels (Formato Corto)', icon: 'clapperboard', gradient: 'from-blue-500 to-cyan-400', bgGlow: 'bg-blue-500/20', buttonText: 'Optimizar contenido', gradientColors: ['#3B82F6', '#22D3EE'],
                 description: 'No es edición estética. Es estructura, ritmo y retención diseñados para que el algoritmo trabaje a tu favor.',
-                features: [
-                    'Hooks optimizados para retener',
-                    'Ritmo de consumo dinámico',
-                    'Diseño para Watch-Time (100%)'
-                ],
-                icon: 'clapperboard',
-                gradient: 'from-blue-500 to-cyan-400',
-                bgGlow: 'bg-blue-500/20',
-                buttonText: 'Optimizar contenido',
-                gradientColors: ['#3B82F6', '#22D3EE']
+                features: ['Hooks optimizados para retener', 'Ritmo de consumo dinámico', 'Diseño para Watch-Time (100%)']
             },
             {
-                id: 'ia_content',
-                title: 'Generación con Inteligencia Artificial',
+                id: 'ia_content', title: 'Generación con Inteligencia Artificial', icon: 'bot', gradient: 'from-emerald-500 to-teal-400', bgGlow: 'bg-emerald-500/20', buttonText: 'Explorar contenido IA', gradientColors: ['#10B981', '#2DD4BF'],
                 description: '¿No tienes tiempo para grabar? Escalamos tu volumen de publicación creando videos, locuciones y posts 100% con IA avanzada.',
-                features: [
-                    'Clonación de voz y avatares',
-                    'Creación de B-Roll sintético',
-                    'Edición usando inteligencia artificial'
-                ],
-                icon: 'bot',
-                gradient: 'from-emerald-500 to-teal-400',
-                bgGlow: 'bg-emerald-500/20',
-                buttonText: 'Explorar contenido IA',
-                gradientColors: ['#10B981', '#2DD4BF']
+                features: ['Clonación de voz y avatares', 'Creación de B-Roll sintético', 'Edición usando inteligencia artificial']
             },
             {
-                id: 'gestion',
-                title: 'Gestión de Redes',
+                id: 'gestion', title: 'Gestión de Redes', icon: 'rocket', gradient: 'from-orange-500 to-yellow-400', bgGlow: 'bg-orange-500/20', buttonText: 'Escalar mi marca', gradientColors: ['#F97316', '#FACC15'],
                 description: 'Sistema completo de contenido y optimización continua. No publicamos por rellenar un feed, publicamos para generar autoridad.',
-                features: [
-                    'Sistemas de contenido escalable',
-                    'Publicación con intención de venta',
-                    'Construcción de comunidad'
-                ],
-                icon: 'rocket',
-                gradient: 'from-orange-500 to-yellow-400',
-                bgGlow: 'bg-orange-500/20',
-                buttonText: 'Escalar mi marca',
-                gradientColors: ['#F97316', '#FACC15']
+                features: ['Sistemas de contenido escalable', 'Publicación con intención de venta', 'Construcción de comunidad']
             }
         ];
 
         const servicesGrid = document.getElementById('services-grid');
         products.forEach(product => {
-            const featuresHTML = product.features.map((feature, idx) => `
+            const featuresHTML = product.features.map((f, i) => `
                 <li class="flex items-start gap-3 text-sm text-gray-300">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="shrink-0 mt-0.5">
-                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" class="text-gray-500" stroke-width="2"/>
-                        <path d="M7.5 12L10.5 15L16.5 9" stroke="url(#gradient-${product.id}-${idx})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <defs>
-                            <linearGradient id="gradient-${product.id}-${idx}" x1="7.5" y1="12" x2="16.5" y2="12" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="${product.gradientColors[0]}" />
-                                <stop offset="1" stop-color="${product.gradientColors[1]}" />
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                    <span>${feature}</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="shrink-0 mt-0.5"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" class="text-gray-500" stroke-width="2"/><path d="M7.5 12L10.5 15L16.5 9" stroke="url(#g-${product.id}-${i})" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="g-${product.id}-${i}" x1="7.5" y1="12" x2="16.5" y2="12" gradientUnits="userSpaceOnUse"><stop stop-color="${product.gradientColors[0]}"/><stop offset="1" stop-color="${product.gradientColors[1]}"/></linearGradient></defs></svg>
+                    <span>${f}</span>
                 </li>
             `).join('');
 
             servicesGrid.innerHTML += `
                 <div class="group relative bg-white/[0.03] border border-white/10 rounded-3xl p-8 hover:bg-white/[0.05] transition-all duration-500 hover:-translate-y-2 flex flex-col backdrop-blur-sm">
                     <div class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl ${product.bgGlow} -z-10"></div>
-
-                    <div class="w-14 h-14 rounded-2xl mb-8 flex items-center justify-center bg-gradient-to-br ${product.gradient} shadow-lg shadow-black/50">
-                        <i data-lucide="${product.icon}" class="w-7 h-7 text-white" stroke-width="2"></i>
-                    </div>
-
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-bold mb-4 text-white">${product.title}</h3>
-                        <p class="text-gray-400 leading-relaxed mb-8">${product.description}</p>
-                        <ul class="space-y-4 mb-10">
-                            ${featuresHTML}
-                        </ul>
-                    </div>
-
-                    <a href="#contact" class="w-full relative inline-flex items-center justify-center gap-2 px-6 py-4 font-semibold text-white bg-white/5 border border-white/10 rounded-xl overflow-hidden group-hover:bg-white/10 transition-colors" style="border-radius: 0.75rem;">
-                        <span class="relative z-10">${product.buttonText}</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i>
-                        <div class="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity bg-gradient-to-r ${product.gradient}"></div>
-                    </a>
+                    <div class="w-14 h-14 rounded-2xl mb-8 flex items-center justify-center bg-gradient-to-br ${product.gradient} shadow-lg shadow-black/50"><i data-lucide="${product.icon}" class="w-7 h-7 text-white" stroke-width="2"></i></div>
+                    <div class="flex-1"><h3 class="text-2xl font-bold mb-4 text-white">${product.title}</h3><p class="text-gray-400 leading-relaxed mb-8">${product.description}</p><ul class="space-y-4 mb-10">${featuresHTML}</ul></div>
+                    <a href="#contact" class="w-full relative inline-flex items-center justify-center gap-2 px-6 py-4 font-semibold text-white bg-white/5 border border-white/10 rounded-xl overflow-hidden group-hover:bg-white/10 transition-colors" style="border-radius: 0.75rem;"><span class="relative z-10">${product.buttonText}</span><i data-lucide="arrow-right" class="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform"></i><div class="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity bg-gradient-to-r ${product.gradient}"></div></a>
                 </div>
             `;
         });
-        
-        // Volver a renderizar los íconos inyectados
         lucide.createIcons();
 
-        // 6. Inyectar logos de marcas (Fácil de editar)
-        const marquee1 = document.getElementById('marquee-1');
-        const marquee2 = document.getElementById('marquee-2');
+        // ==========================================
+        // LÓGICA CARRUSEL DE MARCAS (DRAG & DROP)
+        // ==========================================
+        const brandsCarousel = document.getElementById('brands-carousel');
         
-        // 👇 AQUÍ PONES LOS NOMBRES EXACTOS DE TUS 14 IMÁGENES 👇
-        const misMarcas = [
-            "marca-1.png",
-            "marca-2.png",
-            "marca-3.png",
-            "marca-4.png",
-            "marca-5.png",
-            "marca-6.png",
-            "marca-7.png",
-            "marca-8.png",
-            "marca-9.png",
-            "marca-10.png",
-            "marca-11.png",
-            "marca-12.png",
-            "marca-13.png",
-            "marca-14.png"
-        ];
+        // Tus 14 imágenes en la carpeta "logosafter"
+        const misMarcas = ["marca-1.png", "marca-2.png", "marca-3.png", "marca-4.png", "marca-5.png", "marca-6.png", "marca-7.png", "marca-8.png", "marca-9.png", "marca-10.png", "marca-11.png", "marca-12.png", "marca-13.png", "marca-14.png"];
 
         let logosHTML = '';
-        
         misMarcas.forEach((nombreArchivo, index) => {
             logosHTML += `
-                <div class="flex items-center justify-center transition-transform duration-300 hover:scale-110 px-4 w-32 md:w-48 h-16 md:h-24">
-                    <!-- Las imágenes de las marcas también buscan en la carpeta "logosafter" -->
-                    <img src="./logosafter/${nombreArchivo}" alt="Marca cliente ${index + 1}" class="w-full h-full object-contain" />
+                <div class="flex-shrink-0 flex items-center justify-center transition-transform duration-300 hover:scale-110 px-8 w-40 md:w-56 h-16 md:h-24">
+                    <img src="./logosafter/${nombreArchivo}" alt="Marca ${index + 1}" class="w-full h-full object-contain pointer-events-none" draggable="false" />
                 </div>
             `;
         });
         
-        marquee1.innerHTML = logosHTML;
-        marquee2.innerHTML = logosHTML;
+        // Duplicamos 3 veces para asegurar que el bucle infinito sea impecable al arrastrar rápido
+        brandsCarousel.innerHTML = logosHTML + logosHTML + logosHTML;
 
-        // 7. ENVÍO DE FORMULARIO A WHATSAPP
+        let isDown = false;
+        let startX;
+        let scrollLeftPos;
+
+        // Eventos de ratón para escritorio
+        brandsCarousel.addEventListener('mousedown', (e) => {
+            isDown = true;
+            brandsCarousel.classList.add('cursor-grabbing');
+            brandsCarousel.classList.remove('cursor-grab');
+            startX = e.pageX - brandsCarousel.offsetLeft;
+            scrollLeftPos = brandsCarousel.scrollLeft;
+        });
+        brandsCarousel.addEventListener('mouseleave', () => { isDown = false; brandsCarousel.classList.remove('cursor-grabbing'); brandsCarousel.classList.add('cursor-grab'); });
+        brandsCarousel.addEventListener('mouseup', () => { isDown = false; brandsCarousel.classList.remove('cursor-grabbing'); brandsCarousel.classList.add('cursor-grab'); });
+        brandsCarousel.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - brandsCarousel.offsetLeft;
+            const walk = (x - startX) * 2; // Velocidad de arrastre
+            brandsCarousel.scrollLeft = scrollLeftPos - walk;
+        });
+
+        // Bucle automático infinito para las marcas
+        let autoScrollSpeed = 1;
+        function playMarquee() {
+            if(!isDown) { // Solo avanza solo si el usuario no lo está agarrando
+                brandsCarousel.scrollLeft += autoScrollSpeed;
+            }
+            
+            // Lógica mágica de reseteo para que se sienta infinito
+            const unSetDeLogos = brandsCarousel.scrollWidth / 3;
+            if(brandsCarousel.scrollLeft >= unSetDeLogos * 2) {
+                brandsCarousel.scrollLeft = unSetDeLogos;
+            } else if (brandsCarousel.scrollLeft <= 0) {
+                brandsCarousel.scrollLeft = unSetDeLogos;
+            }
+            
+            requestAnimationFrame(playMarquee);
+        }
+        playMarquee(); // Iniciar animación
+
+        // ==========================================
+        // ENVÍO DE FORMULARIO A WHATSAPP
+        // ==========================================
         document.getElementById('wsp-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Evita que la página se recargue
-
-            // Recoger los valores de los inputs usando sus IDs
+            e.preventDefault();
             const name = document.getElementById('f-name').value;
             const email = document.getElementById('f-email').value;
             const phone = document.getElementById('f-phone').value;
             const social = document.getElementById('f-social').value || 'No proporcionado';
             const service = document.getElementById('f-service').value;
 
-            // Construir el mensaje formateado para WhatsApp (los asteriscos hacen el texto en negrita)
-            const message = `👋 Hola After.All, estoy interesado en potenciar mi contenido. Estos son los datos de mi proyecto:\n\n` +
-                            `*Nombre o Marca:* ${name}\n` +
-                            `*Correo:* ${email}\n` +
-                            `*Teléfono:* ${phone}\n` +
-                            `*Redes Sociales:* ${social}\n` +
-                            `*Servicio de interés:* ${service}`;
+            const message = `👋 Hola After.All, estoy interesado en potenciar mi contenido. Estos son los datos de mi proyecto:\n\n*Nombre o Marca:* ${name}\n*Correo:* ${email}\n*Teléfono:* ${phone}\n*Redes Sociales:* ${social}\n*Servicio de interés:* ${service}`;
 
-            // Número de WhatsApp destino
-            const phoneNumber = "51935964364"; 
-
-            // Codificar el mensaje para que sea válido en una URL (espacios, saltos de línea, etc.)
             const encodedMessage = encodeURIComponent(message);
-
-            // Crear el enlace y abrirlo en una nueva pestaña
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            window.open(whatsappURL, '_blank');
+            window.open(`https://wa.me/51935964364?text=${encodedMessage}`, '_blank');
         });
 
     </script>
